@@ -119,7 +119,7 @@ export function VideoPlayer({
   onPause
 }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [lastReportedTime, setLastReportedTime] = useState(0); // नया state
+  const [lastReportedTime, setLastReportedTime] = useState(0); // New state
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -133,7 +133,7 @@ export function VideoPlayer({
       const currentTime = videoRef.current.currentTime;
       const duration = videoRef.current.duration;
 
-      // ✅ केवल तब अपडेट करें जब यूजर नॉर्मली देख रहा हो (स्किप नहीं)
+      // Update only when user is viewing normally (no skipping)
       if (duration && Math.abs(currentTime - lastReportedTime) < 2) {
         onTimeUpdate(currentTime, duration);
         setLastReportedTime(currentTime);
